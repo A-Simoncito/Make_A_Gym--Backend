@@ -46,6 +46,20 @@ router.get('/punto2', (_, res) => {
 });
 
 //punto 3
+router.put('/punto3', (req, res) => {
+  const nuevoProducto = req.body; 
+
+  const indice = ProductoYmercancia.findIndex(producto => producto.modelo === nuevoProducto.modelo);
+
+  if (indice !== -1) {
+   
+    ProductoYmercancia[indice] = nuevoProducto;
+    res.send("Producto actualizado ;)");
+  } else {
+    res.status(404).send("No se encontró el producto para actualizar");
+  }
+});
+
 
 //punto 4
 router.get('/punto4/:modelo', (req, res) => {
@@ -88,4 +102,20 @@ router.get('/punto6/:precio', (req: Request, res: Response) => {
 });
 
 //punto 7
+router.post('/punto7', (req, res) => {
+  const nuevoProducto = req.body; 
+
+  const clavesProductosExistentes = Object.keys(ProductoYmercancia[0]);
+  const clavesNuevoProducto = Object.keys(nuevoProducto);
+  
+  const clavesDiferentes = clavesNuevoProducto.filter(clave => !clavesProductosExistentes.includes(clave));
+
+  if (clavesDiferentes.length === 0) {
+    ProductoYmercancia.push(nuevoProducto);
+    res.send("Producto creado ;)");
+  } else {
+    res.status(400).send("El nuevo producto no tiene las mismas claves que los productos existentes");
+  }
+});
+
 
