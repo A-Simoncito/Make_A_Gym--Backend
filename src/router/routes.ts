@@ -34,11 +34,12 @@ let  ProductoYmercancia = [
 ];
 
 
-//punto 1
-router.get('/punto1', (_, res) => {
-    res.send(ProductoYmercancia);
-});
-        
+// //punto 1
+// router.get('/punto1', (_, res) => {
+//     res.send(ProductoYmercancia);
+// });
+  
+
 //punto 2
 router.get('/punto2', (_, res) => {
     const punto2 = ProductoYmercancia.filter(producto => producto.precio > 100);
