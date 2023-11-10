@@ -1,5 +1,6 @@
 import {Router} from "express";
 import express, {Request, Response} from "express";
+import { getProducts } from "../controllers/controllers";
 
 // import express from "express";
 // const app = express();
@@ -38,7 +39,8 @@ let  ProductoYmercancia = [
 // router.get('/punto1', (_, res) => {
 //     res.send(ProductoYmercancia);
 // });
-  
+        
+router.get ("/productos", getProducts)
 
 //punto 2
 router.get('/punto2', (_, res) => {
